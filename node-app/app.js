@@ -1,0 +1,6 @@
+const fs=require('fs')
+const load =require('./utils')
+fs.writeFileSync('note2.txt','this is the file created by nodejs')
+console.log(load.name)
+const sum =load(4,2)
+console.log(sum)
