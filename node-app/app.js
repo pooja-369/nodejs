@@ -21,8 +21,17 @@ if(command==='add'){
 yargs.command({
     command:'add',
     describe:'adding a note',
-    handler:function(){
-        console.log('adding a new note !')
+    builder:{
+        title:{
+            describe:'Note title',
+            demandOption:true,  
+            type:'string'
+        }
+ 
+    },
+    handler:function(argv){
+        // console.log('adding a new note !',argv)
+        console.log('title :'+argv.title)
     }
 })
 
@@ -35,7 +44,8 @@ yargs.command({
         console.log('removing a note !')
     }
 })
-
-console.log(yargs.argv) //must be after otherwise handler didn't run 
+// yargs.parse()
+console.log(yargs.argv) 
+//must be after otherwise handler didn't run 
 
 
