@@ -24,9 +24,14 @@ yargs.command({
     builder:{
         title:{
             describe:'Note title',
-            demandOption:true,  
+            demandOption:true,   //for compulory 
+            type:'string'   //value will be boolean by default
+        },
+        body:{
+            describe:'note a body',
+            demandOption:true,
             type:'string'
-        }
+        },
  
     },
     handler:function(argv){
