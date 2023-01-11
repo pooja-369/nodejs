@@ -1,6 +1,9 @@
 const fs=require('fs')
 const load =require('./utils')
 const yargs=require('yargs')
+const notes = require('./note.js')
+
+
 fs.writeFileSync('note2.txt','this is the file created by nodejs')
 console.log(load.name)
 const sum =load(8,2)
@@ -36,7 +39,8 @@ yargs.command({
     },
     handler:function(argv){
         // console.log('adding a new note !',argv)
-        console.log('title :'+argv.title)
+        // console.log('title :'+argv.title)
+        notes.addNote(argv.title, argv.body)
     }
 })
 
@@ -49,6 +53,26 @@ yargs.command({
         console.log('removing a note !')
     }
 })
+
+// Create list command
+yargs.command({
+    command: 'list',
+    describe: 'List your notes',
+    handler: function () {
+        console.log('Listing out all notes')
+    }
+})
+
+// Create read command
+yargs.command({
+    command: 'read',
+    describe: 'Read a note',
+    handler: function () {
+        console.log('Reading a note')
+    }
+})
+
+
 // yargs.parse()
 console.log(yargs.argv) 
 //must be after otherwise handler didn't run 
